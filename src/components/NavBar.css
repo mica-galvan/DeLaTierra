@@ -7,7 +7,7 @@
 }
 
 nav{
-    background: rgb(94, 15, 2);
+    background: rgb(110, 54, 37);
     height: 100px;
     width: 100%;
  }
@@ -41,13 +41,13 @@ nav{
  }
 
  li a.active, li a:hover{
-     background: rgb(160, 145, 62);
-     color: rgb(95, 55, 2);
+     background: rgba(146, 104, 64, 0.342);
+     color: rgb(0, 0, 0);
      transition: .5s;
 }
 
 @media (max-width: 952px){
-nav ul li a {
+nav ul li a  {
     font-size: 16px;}
 }
 @media (max-width:858px) {
@@ -66,7 +66,7 @@ nav ul li {
     margin: 50px 0;
     line-height: 30px;
 }
-nav ul li a{
+nav ul li a {
     font-size: 20px;
 }
 li a:hover, li a.active{

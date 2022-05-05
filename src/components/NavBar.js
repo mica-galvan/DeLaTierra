@@ -1,10 +1,10 @@
 import img from '../components/imagenes/logoMain.svg'
+import CartWidget from './CartWidget/CartWidget';
 import './NavBar.css'
 
 
 function NavBar() {
     return (
-
         <nav>
             <div className='logo'>
                 <a href="/">
@@ -23,10 +23,15 @@ function NavBar() {
                 <li>
                     <a href="/">Contact</a>
                 </li>
-            </ul>
+                <li>
+                    <a href="/"><CartWidget /></a> 
+                </li>
+            </ul>        
             </div>
         </nav>
+     
     );
+
 }
 
 export default NavBar;
