@@ -11,18 +11,18 @@ function NavBar() {
 
 
 
-<Navbar className='nav' collapseOnSelect expand="lg" bg="" variant="dark">
+<Navbar className='nav' collapseOnSelect expand="lg" bg="" variant="light">
   <Container>
   <Navbar.Brand href="#home">
   <img src={img} className='main-logo logo' alt='logo'/>
   </Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="me-auto">
-      <Nav.Link href="#Home">Home</Nav.Link>
-      <Nav.Link href="#products">Products</Nav.Link>
-      <Nav.Link href="#contact">Contact</Nav.Link>
-      <NavDropdown title="others" id="collasible-nav-dropdown">
+    <Nav className="me-auto nav-right">
+      <Nav.Link href="#Home">Inicio</Nav.Link>
+      <Nav.Link href="#products">Productos</Nav.Link>
+      <Nav.Link href="#contact">Contacto</Nav.Link>
+      <NavDropdown title="Mayoristas" id="collasible-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Referencias</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Presupuestos</NavDropdown.Item>
     
@@ -31,7 +31,7 @@ function NavBar() {
       </NavDropdown>
     </Nav>
     <Nav>
-      <Nav.Link href="#"><CartWidget /></Nav.Link>
+      <Nav.Link className='carrito' href="#"><CartWidget /></Nav.Link>
 
     </Nav>
   </Navbar.Collapse>

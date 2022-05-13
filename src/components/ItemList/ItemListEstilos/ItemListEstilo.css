@@ -1,0 +1,20 @@
+.item-list-columna {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 380px);
+    justify-content: center;
+    text-align: center;
+    gap: 30px 60px;
+    margin: 40px 20px;
+    color: rgb(88, 85, 85);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    list-style: none !important;
+    border: none !important;
+  }
+  
+  .nombre-estilo {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 16px;
+      color: rgb(165, 118, 61);
+ 
+  }
