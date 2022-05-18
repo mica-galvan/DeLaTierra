@@ -1,4 +1,4 @@
-export const LosProductos = [
+ export const LosProductos = [
     {
         id: '1',
         categoria: 'Macetas',
@@ -55,3 +55,4 @@ export const LosProductos = [
     },
 
 ]
+

@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import '../ItemList/ItemListEstilos/ItemListEstilo.css'
-import Item from './Item';
-import { LosProductos } from './ItemDatos';
+import Item from '../Item/Item';
+import { LosProductos } from '../Item/ItemDatos';
 
 
 const ItemList = () => {
   const [productos, setProductos] = useState([]);
-
-  const getProductos = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(LosProductos);
-    }, 3000);
-  });
-
-  const getLosProductos = async () => {
-    try {
-      const result = await getProductos;
-      setProductos(result);
-    } catch (error) {
-      console.log(error);
-      console.log('Página no disponible');
-    }
-  };
-
+  
   useEffect(() => {
-    getLosProductos();
+    const getProductos = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(LosProductos);
+      }, 3000);
+    });
+
+    const getLosProductos = async () => {
+      try {
+        const result = await getProductos;
+        setProductos(result);
+      } catch (error) {
+        console.log(error);
+        console.log('Página no disponible');
+      }
+    };
+
+    getLosProductos()
   }, []);
 
   return (
@@ -59,5 +59,4 @@ const ItemList = () => {
     );
   };
   
-  export default ItemList;
-  
+  export default ItemList

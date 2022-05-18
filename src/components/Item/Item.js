@@ -1,5 +1,5 @@
-import ItemCount from './ItemCount.js';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import ItemCount from '../ItemList/ItemCount'
+import { Card, Container } from 'react-bootstrap';
 
 
 const Item = ({ nombre, foto, precio, id, stock }) => {

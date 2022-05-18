@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../ItemList/ItemListEstilos/ItemCountEstilo.css';
-import { Card, Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
 
