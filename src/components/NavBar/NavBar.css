@@ -12,11 +12,16 @@ nav{
     width: 100%;
  }
 
+ .nav-link{
+     list-style: none;
+     font-size: 16px;
+ }
 .nav-right{
     align-items: right !important;
 
 }
  .carrito{
+     
      color: #8d4a1d !important;
  }
  .logo {

@@ -1,11 +1,14 @@
 import ItemCount from '../ItemList/ItemCount'
-import { Card, Container } from 'react-bootstrap';
+import { Card, Container, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import '../ItemList/ItemListEstilos/ItemCountEstilo.css';
 
 
 const Item = ({ nombre, foto, precio, id, stock }) => {
 
     return (
      
+        
         <Card>
             <Container>
                 <Card.Text className="">
@@ -14,7 +17,11 @@ const Item = ({ nombre, foto, precio, id, stock }) => {
                     <span className="">{precio}</span>
                     <Card.Text>Stock Disponible: {stock} </Card.Text>
                     <ItemCount  initial={1} stock={stock} />
-                </Card.Text>              
+                    <Link to={`/detalle/${id}`}>
+                <Button className='color-botonAdd'>Ver producto</Button>
+                </Link>  
+                </Card.Text>   
+                         
             </Container>
         </Card>
         

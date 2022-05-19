@@ -1,62 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import '../ItemList/ItemListEstilos/ItemListEstilo.css'
 import Item from '../Item/Item';
-import { LosProductos } from '../Item/ItemDatos';
+//import { LosProductos } from '../Item/ItemDatos';
+import { getFetch } from '../Item/getFetch';
+import { useParams } from 'react-router-dom';
+import '../EstiloLoader/estiloLoader.css'
 
 
 const ItemList = () => {
   const [productos, setProductos] = useState([]);
-  
+  const [loading, setLoading] = useState(true);
+
+  const { categoriaFiltro } = useParams()
+
   useEffect(() => {
-    const getProductos = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(LosProductos);
-      }, 3000);
-    });
+    if (categoriaFiltro) {
+      getFetch()
+        .then(respuesta => setProductos(respuesta.filter((productosFiltrados) => productosFiltrados.categoria === categoriaFiltro)))
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false))
+    } else {
+      getFetch()
+        .then(respuesta => setProductos(respuesta))
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false))
+    }
 
-    const getLosProductos = async () => {
-      try {
-        const result = await getProductos;
-        setProductos(result);
-      } catch (error) {
-        console.log(error);
-        console.log('Página no disponible');
-      }
-    };
-
-    getLosProductos()
-  }, []);
+  }, [categoriaFiltro]);
 
   return (
-    <div className= "item-list-columna">
+    <div className="item-list-columna">
       {
-       productos.length ? (
+        productos.length ? (
           <>
             {
-             
+
               productos.map((producto) => {
                 return (
-                    <div  key={producto.id}>
-                        
-                      <Item
-                        nombre={producto.nombre}
-                        foto={producto.foto}
-                        precio={producto.precio}
-                        stock={producto.stock}
-                        id={producto.id}
-                      />
-                      
-                    </div>
-                  );
-                })
-              }
-            </>
-          ) : (
-            <h4 style={{ textAlign: 'center', color: 'grey'}} >Cargando por favor espere...</h4>
-          )
-        }
-      </div>
-    );
-  };
-  
-  export default ItemList
+                  <div key={producto.id}>
+
+                    <Item
+                      nombre={producto.nombre}
+                      foto={producto.foto}
+                      precio={producto.precio}
+                      stock={producto.stock}
+                      id={producto.id}
+                    />
+
+                  </div>
+                );
+              })
+            }
+          </>
+        ) : (
+         // <h4 style={{ textAlign: 'center', color: 'grey' }} >Cargando por favor espere...</h4>
+         <span style={{ marginLeft: 'auto', marginRight: 'auto', display: 'block' }}className="loader"></span>
+        )
+      }
+    </div>
+  );
+};
+
+export default ItemList
