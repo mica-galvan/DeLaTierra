@@ -1,3 +1,22 @@
+Para ver la navegación del sitio (video/gif), descargar el archivo (114Mb) entrando a: https://drive.google.com/file/d/1xpwO5zBukIMhA5M0iclTpiseIif9ZpUT/view
+
+Entrega preliminar de la realización de un e-commerce basado en un emprendimiento real de Quilmes, Bs.As.
+
+El emprendimiento es "de la Tierra - Jardinería y Macetas" y el objeto de este sitio es mostrar los productos que la tienda tiene disponible y a la venta (por el momento se están utilizando imagénes no reales). El logo y la paleta de colores respeta los de la marca.
+
+Tiene 3 grandes categorias: "Macetas", "Herramientas" & "Cesped y Riego". Todas son navegables. Al igual que el "Inicio" y el logo (que muestran todos los productos).
+
+En cada una de las categorias se va filtrando por productos específicos de esa categoría y si clickeas sobre él, te lleva al detalle del mismo, con el precio y una breve descripción.
+
+Cada item posee un contador con un stock limite y un botón que agrega la cantidad seleccionada al carrito (que a esta altura aún no requiere funcionalidad para el proyecto).
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
