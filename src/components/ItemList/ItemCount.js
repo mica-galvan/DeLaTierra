@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../ItemList/ItemListEstilos/ItemCountEstilo.css';
 import { Row, Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad';
 
 
 
@@ -13,7 +14,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
     };
 
     onAdd = (cantidad) => {
-        alert("Se agregó " + cantidad + " producto/s.");
+        console.log("Se agregó " + cantidad + " producto/s.");
     };
 
     return (
@@ -37,13 +38,17 @@ const ItemCount = ({ initial, stock, onAdd }) => {
                             +
                         </Button>
 
+                        <Intercambiabilidad cantidad={cantidad}/>
+                        
+
+                        {/* 
+
                         <Button className='color-botonAdd' style={{ marginLeft: '18px' }}
                             onClick={() => onAdd(cantidad)}
                             disabled={stock === 0 ? true : null}
                         >
-                            Añadir al carrito
                         </Button>
-
+ */}
                         </Col>
                 
             </>
@@ -54,5 +59,6 @@ const ItemCount = ({ initial, stock, onAdd }) => {
 
 
 export default ItemCount;
+
 
 
