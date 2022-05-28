@@ -11,6 +11,8 @@ const ItemList = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  console.log(loading);
+
   const { categoriaFiltro } = useParams()
 
   useEffect(() => {

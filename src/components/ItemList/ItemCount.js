@@ -5,16 +5,31 @@ import { Button } from 'react-bootstrap';
 import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad';
 
 
+import { useCartContext } from '../../Context/CartContext';
 
-const ItemCount = ({ initial, stock, onAdd }) => {
+const ItemCount = ({ initial, stock, onAdd, item }) => {
+    
+    const { addToCart } = useCartContext()
+
     const [cantidad, setCantidad] = useState(initial);
 
-    const agregaQuitaProducto = (valor) => {
-        setCantidad(cantidad + valor);
-    };
+    function agrega() {
+        if (cantidad < stock) {
+            setCantidad(cantidad + 1);
+        } 
+    }
+    function quita() {
+        if (cantidad > 1) {
+            setCantidad(cantidad - 1);
+        } 
+    }
 
-    onAdd = (cantidad) => {
-        console.log("Se agregó " + cantidad + " producto/s.");
+     function addItem(cantidad, item) {
+         onAdd(cantidad, item);
+     }
+
+     onAdd = (cantidad, item) => {
+        addToCart({ ...item, cantidad: cantidad })
     };
 
     return (
@@ -24,7 +39,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
                     <Col>
                         <Button
                            className='boton-aqp'
-                            onClick={() => agregaQuitaProducto(-1)}
+                            onClick={() => quita(-1)}
                             disabled={cantidad === initial ? true : null}
                         >
                             -
@@ -32,22 +47,26 @@ const ItemCount = ({ initial, stock, onAdd }) => {
                         <span className="size-span">{cantidad}</span>
                         <Button
                            className='boton-aqp'
-                            onClick={() => agregaQuitaProducto(+1)}
+                            onClick={() => agrega(+1)}
                             disabled={cantidad === stock ? true : null}
                         >
                             +
                         </Button>
 
-                        <Intercambiabilidad cantidad={cantidad}/>
+                        <Intercambiabilidad cantidad={cantidad} item={item} onAdd={addItem} />
+                        {/* <Button className='color-botonAdd' style={{ marginLeft: '18px' }}
+                            onClick={() => addItem} 
+                            disabled={stock === 0 ? true : null}
+                        >
+                            añadir al carrito
+                        </Button> */}
+
+                        
                         
 
                         {/* 
-
-                        <Button className='color-botonAdd' style={{ marginLeft: '18px' }}
-                            onClick={() => onAdd(cantidad)}
-                            disabled={stock === 0 ? true : null}
-                        >
-                        </Button>
+<Intercambiabilidad cantidad={cantidad}/>
+                       
  */}
                         </Col>
                 
