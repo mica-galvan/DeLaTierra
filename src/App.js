@@ -7,6 +7,8 @@ import CartContextProvider from './Context/CartContext';
 
 
 function App() {
+  //const { cantidadItems } = CartContextProvider()
+
 return (
     <BrowserRouter>
     <CartContextProvider>
@@ -21,7 +23,8 @@ return (
      {/* <ItemListContainer saludo='NUESTROS PRODUCTOS' /> */}
      {/* <ItemDetailContainer idProducto='4' /> */}
       <Route path="/*" element = {  <Navigate to='/' replace/> } /> {/* HACER UN COMPONENTE 404 NOT FOUND  */}
-      <Route path='/Cart' element={<Cart/>}/>
+      <Route path='/Cart' element={<Cart/>}/> 
+      
      </Routes>
      </div>
      </CartContextProvider>
