@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import { collection, getDocs, getFirestore, query, where, writeBatch, documentId, addDoc } from "firebase/firestore";
 
 const CartContext = createContext([])
 
@@ -8,6 +9,7 @@ export const useCartContext = () => useContext(CartContext)
 const CartContextProvider = ({ children }) => {
     // Estados y funciones globales
     const [cartList, setCartList] = useState([])
+    const [orderId, setOrderId] = useState({});
 
     function isInCart(id) {
         return cartList.some(prod => prod.id === id)
@@ -25,6 +27,7 @@ const CartContextProvider = ({ children }) => {
 
     function clearCart() {
         setCartList([]);
+        //console.log(orderId);
     }
 
     function removeItem(itemId) {     
@@ -41,6 +44,48 @@ const CartContextProvider = ({ children }) => {
         return cantidad
     }
 
+    function createOrder(customerData) {
+        let order = {};
+        
+        order.customerData = customerData;
+        order.fecha = new Date();
+        order.total = calcularTotal();
+        order.items = cartList.map(item => {
+            const id = item.id;
+            const nombre = item.nombre;
+            const cantidad = item.cantidad;
+            const stockActualizado = item.stock-item.cantidad;
+            const precio = item.precioNumerico*item.cantidad;
+            return {id, nombre, cantidad, stockActualizado, precio}
+        });
+
+        async function updateStocks() {
+            const queryCollectionStocks = collection(db, 'items');
+            const queryUpdateStocks = query(queryCollectionStocks, where(documentId(), 'in', cartList.map(item => item.id)));
+            const batch = writeBatch(db);
+    
+            await getDocs(queryUpdateStocks)
+            .then(resp => resp.docs.forEach(
+                res => batch.update(res.ref, {stock: order.items.find(item => item.id === res.id).stockActualizado})
+            ))
+            .catch(err => console.log(err))
+    
+            batch.commit()
+        }
+    
+        const db = getFirestore();
+        const queryCollectionOrders = collection(db, 'orders');
+        addDoc(queryCollectionOrders, order)
+        .then(resp => setOrderId(resp.id))
+        //.then(() => console.log(orderId))
+        .then(() => updateStocks())
+        .catch(err => console.log(err))
+        .finally(() => clearCart())
+    };
+
+
+
+
     return (
         <CartContext.Provider value={{
             cartList,
@@ -49,7 +94,9 @@ const CartContextProvider = ({ children }) => {
             isInCart,
             removeItem,
             calcularTotal,
-            cantidadItems
+            cantidadItems,
+            createOrder,
+            orderId
         }} >
             {children}
         </CartContext.Provider>
