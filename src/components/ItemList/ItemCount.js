@@ -53,7 +53,7 @@ const ItemCount = ({ initial, stock, onAdd, item }) => {
                             +
                         </Button>
 
-                        <Intercambiabilidad cantidad={cantidad} item={item} onAdd={addItem} />
+                        <Intercambiabilidad cantidad={cantidad} item={item} onAdd={addItem} stock={stock} />
                         {/* <Button className='color-botonAdd' style={{ marginLeft: '18px' }}
                             onClick={() => addItem} 
                             disabled={stock === 0 ? true : null}

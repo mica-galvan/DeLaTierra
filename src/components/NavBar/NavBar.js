@@ -34,10 +34,10 @@ function NavBar() {
         <NavDropdown.Item href="#Cesped y Riego/Plantas">Plantas</NavDropdown.Item>
       </NavDropdown> */}
     </Nav>
-    <Nav>
+    <CartWidget />
+    {/* <Nav>
       <Nav.Link className='carrito nav-link' ><CartWidget /></Nav.Link>
-
-    </Nav>
+    </Nav> */}
   </Navbar.Collapse>
   </Container>
 </Navbar>

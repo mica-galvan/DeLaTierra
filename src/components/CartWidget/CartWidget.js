@@ -13,8 +13,8 @@ if(cantidadItems()>0)
    <Link to='/Cart' style={{textDecoration: 'none'}}>
      {/* <div style={{opacity: cantidadItems()==0 ? '0' : '1'}}>       */}
      <div>
-  <span><BsFillCartFill style={{color:'rgb(250, 189, 59)'}}/></span>
-  <span >{ cantidadItems() }</span>
+  <span><BsFillCartFill style={{color:'rgb(150, 126, 76)', height:'25px'}}/></span>
+  <span className="text-muted " >{ cantidadItems() }</span>
   </div>
   </Link>
    

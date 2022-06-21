@@ -34,7 +34,7 @@ const ItemDetailContainer = ({ idProducto }) => {
 
 
     return (
-        <div>
+        <div style={{ minHeight: '100vh'}}>
             {loading ?
                 // <h3 style={{ textAlign: 'center', color: 'rgb(134, 111, 83)', fontFamily: 'Arial' }}>Cargando...</h3>
                 <h3 style={{ marginLeft: 'auto', marginRight: 'auto', display: 'block' }} className="loader">

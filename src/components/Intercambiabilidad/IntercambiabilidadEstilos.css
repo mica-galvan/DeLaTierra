@@ -1,0 +1,25 @@
+.boton-int {
+    background-color: rgb(192, 148, 94) !important;
+    color: aliceblue;
+    border-color: none !important;
+    text-decoration: none;
+    text-align: center;
+    border: none !important;
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 35px;
+}
+.boton-int:disabled {
+    background-color: rgba(228, 227, 227, 0.884) !important;
+    color: rgb(0, 0, 0) !important;
+
+}
+.color-botonint {
+    margin-bottom: 15px;
+    background-color: rgb(209, 159, 103) !important;
+    border-color: none !important;
+    text-decoration: none;
+    border: none !important;
+    font-size: 15px !important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+}

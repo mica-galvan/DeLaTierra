@@ -1,34 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import '../ItemList/ItemListEstilos/ItemListEstilo.css'
 import Item from '../Item/Item';
-//import { LosProductos } from '../Item/ItemDatos';
-// import { getFetch } from '../Item/getFetch';
 import { useParams } from 'react-router-dom';
 import '../EstiloLoader/estiloLoader.css';
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { useCartContext } from "../../Context/CartContext"
 
 const ItemList = () => {
+  const { prodStock, setProdStock } = useCartContext()
   const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
 
-  console.log(loading);
+  //console.log(loading);
 
   const { categoriaFiltro } = useParams()
-
-  // useEffect(() => {
-  //   if (categoriaFiltro) {
-  //     getFetch()
-  //       .then(respuesta => setProductos(respuesta.filter((productosFiltrados) => productosFiltrados.categoria === categoriaFiltro)))
-  //       .catch((err) => console.log(err))
-  //       .finally(() => setLoading(false))
-  //   } else {
-  //     getFetch()
-  //       .then(respuesta => setProductos(respuesta))
-  //       .catch((err) => console.log(err))
-  //       .finally(() => setLoading(false))
-  //   }
-
-  // }, [categoriaFiltro]);
 
   useEffect(() => {
     const db = getFirestore();
@@ -43,16 +28,17 @@ const ItemList = () => {
           console.log("No se encontaron resultados");
         }
         setProductos(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-        setLoading(false);
+        //setLoading(false);
       });
     } else {
       const itemsCollection = collection(db,"items");
       getDocs(itemsCollection).then((snapshot) => {
-        setProductos(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));        
-        setLoading(false);
+        setProductos(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))); 
+        //setProdStock(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));       
+        //setLoading(false);
       });
     }
-  }, [categoriaFiltro]);
+  }, [categoriaFiltro, prodStock, setProdStock]);
 
 
   return (

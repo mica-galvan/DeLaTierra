@@ -1,0 +1,93 @@
+.fondoCart{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px #f8e3bf solid;
+    width: 60%;
+    border-radius: 15px;
+    padding: 1em;
+    font-size: 18px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+.cartForm{
+width: 80%;
+
+}
+
+.total{
+    background-color: #c5ae82;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+input{
+    width: 50%;
+    margin: 15px;
+    
+}
+
+textarea{
+    width: 50%;
+}
+
+.msj {
+border: rgb(209, 159, 103);
+border-radius: 2;
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+color: rgb(119, 85, 11);
+font-size: 20px;
+letter-spacing: 1px;
+margin-bottom: 20px;
+display: flex;
+justify-content: center;
+align-self: center;
+
+
+}
+
+
+.boton-txt {
+    background-color: rgb(192, 148, 94) !important;
+    color: aliceblue;
+    border-color: none !important;
+    text-decoration: none;
+    text-align: center;
+    border: none !important;
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 35px;
+}
+.boton-txt:disabled {
+    background-color: rgba(228, 227, 227, 0.884) !important;
+    color: rgb(0, 0, 0) !important;
+
+}
+.color-boton-txt{
+    margin-bottom: 15px;
+    background-color: rgb(209, 159, 103) !important;
+    border-color: none !important;
+    text-decoration: none;
+    border: none !important;
+    font-size: 15px !important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+}
+.boton-redondo{
+    
+   color: #794f02;
+    margin-left: 20px;
+    cursor: pointer;
+    height: 15px;
+    border: 1px, solid, saddlebrown;
+  
+}
+
+.miniatura{
+    height: 35px !important;
+    width: 35px !important;
+    margin-right: 15px;
+}

@@ -1,35 +1,34 @@
 import React from 'react'
 import { useState } from 'react'
-
 import { Link } from 'react-router-dom'
-
-import '../ItemList/ItemListEstilos/ItemCountEstilo.css';
-
+import {Button} from 'react-bootstrap';
+import '../ItemList/ItemListEstilos/ItemListEstilo.css'
 
 const InputCount = () => {
     return (
         <>
             <Link to='/Cart' >
-                <button
-                    className="color-botonAdd button button-primary" style={{ marginLeft: '18px' }}
+                <Button
+                    className=" color-botonAdd" style={{ marginLeft: '18px' }}
                     //onClick={() => console.log('ir a cart')}
-                >Terminar compra</button>
+                >Terminar compra</Button>
             </Link>
             <Link to='/' >
-                <button
-                    className="color-botonAdd button button-primary" style={{ marginLeft: '18px' }}
+                <Button
+                    className=" color-botonAdd" style={{ marginLeft: '18px' }}
                     //onClick={() => console.log('ir al home')}
-                >Seguir comprando</button>
+                >Seguir comprando</Button>
             </Link>
         </>
     )
 }
 
-const ButtonCount = ({ handleInter, cantidad, onAdd, item }) => {
+const ButtonCount = ({ handleInter, cantidad, onAdd, item, stock }) => {
 
 
-    return <button
+    return <Button
         className="color-botonAdd button button-primary" style={{ marginLeft: '18px' }}
+        disabled = { stock === 0 ? true : null }
         onClick={() => {
             handleInter();
             onAdd(cantidad, item);
@@ -37,14 +36,14 @@ const ButtonCount = ({ handleInter, cantidad, onAdd, item }) => {
 
         }}
     // disabled={stock === 0 ? true : null} 
-    >Añadir al carrito</button>
+    >Añadir al carrito</Button>
 
 }
 
 
 
 
-const Intercambiabilidad = ({ cantidad, item, onAdd }) => {
+const Intercambiabilidad = ({ cantidad, item, onAdd, stock }) => {
     const [inputType, setInputType] = useState('button')
 
     const handleInter = () => {
@@ -60,7 +59,7 @@ const Intercambiabilidad = ({ cantidad, item, onAdd }) => {
 
                 {
                     inputType === 'button' ?
-                        <ButtonCount handleInter={handleInter} cantidad={cantidad} item={item} onAdd={onAdd}/>
+                        <ButtonCount handleInter={handleInter} cantidad={cantidad} item={item} onAdd={onAdd} stock={stock} />
                         :
                         <InputCount />
 
